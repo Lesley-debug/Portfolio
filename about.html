@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Lesley Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo" data-aos="zoom-in" data-aos-duration="1000">
+        <span>Lesley Tabi</span>
+      </div>
+      <div class="links">
+        <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"><a href="index.php">Home</a></div>
+        <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"><a href="about.html" class="active">About</a></div>
+        <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400"><a href="services.html">Services</a></div>
+        <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500"><a href="blog/index.php">Blogs</a></div>
+        <div class="link contact-btn" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600"><a href="contact.html">Contact Us</a></div>
+      </div>
+      <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+    </div>
+    <div class="dropdown">
+      <div class="links">
+        <a href="index.php">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="services.html">Services</a>
+        <a href="blog/index.php">Blogs</a>
+        <a href="contact.html">Contact Us</a>
+        <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-image" data-aos="fade-right" data-aos-duration="1200">
+        <img src="images/short.jpg" alt="Lesley Tabi">
+      </div>
+
+      <div class="about-content" data-aos="fade-left" data-aos-duration="1200">
+        <h2>About Me</h2>
+        <h3>Backend Developer | Graphics Designer | Video Editor</h3>
+        <p>
+          Hi, I'm <strong>Lesley Tabi</strong> — a passionate backend developer,
+          graphics designer, and video editor who loves building powerful digital experiences.
+        </p>
+
+        <p>
+          As a backend developer, I create secure and efficient web applications
+          using <strong>PHP</strong> (Laravel, OOP, MVC), <strong>MySQL</strong>,
+          and <strong>API integration</strong>. My focus is on writing clean and scalable code
+          that enhances user experiences.
+        </p>
+
+        <p>
+          My creativity extends to <strong>graphic design</strong> and
+          <strong>video editing</strong> — I enjoy turning ideas into visuals that communicate,
+          inspire, and engage.
+        </p>
+
+        <p>
+          I'm constantly learning and exploring new tools to improve my craft
+          and collaborate on projects that push boundaries.
+        </p>
+
+        <a href="contact.html" class="btn-primary">Let's Work Together</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Lesley Tabi. All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ offset: 0 });
+  </script>
+  <script src="js/nav.js"></script>
+</body>
+</html>

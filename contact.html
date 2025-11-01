@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Lesley Portfolio</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body class="contact-page">
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo" data-aos="zoom-in" data-aos-duration="1000">
+        <span>Lesley Tabi</span>
+      </div>
+      <div class="links">
+        <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"><a href="index.php">Home</a></div>
+        <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"><a href="about.html">About</a></div>
+        <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300"><a href="services.html">Services</a></div>
+        <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400"><a href="blog/index.php">Blogs</a></div>
+        <div class="link contact-btn" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500"><a href="contact.html">Contact Us</a></div>
+      </div>
+      <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+    </div>
+    <div class="dropdown">
+      <div class="links">
+        <a href="index.php">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="blog/index.php">Blogs</a>
+        <a href="contact.html">Contact</a>
+        <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-content" data-aos="fade-right" data-aos-duration="1000">
+        <h2>Get In Touch</h2>
+        <h3>Have a project or collaboration idea?</h3>
+        <p>Let’s make something amazing together! Reach out via email, phone, or the contact form — I’d love to connect with you.</p>
+
+        <div class="contact-details">
+          <p><strong>Email:</strong> esanglesley@gmail.com</p>
+          <p><strong>Phone:</strong> +237 6 71 29 10 50</p>
+          <p><strong>Location:</strong> Bamenda Cameroon</p>
+        </div>
+
+        <div class="social-links">
+          <a href="https://www.facebook.com/profile.php?id=100063757374130"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/lesleydesigns1?igsh=eGd5eHAyZmpkbzMy"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/esang-lesley-a0b1a1267?trk=contact-info"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/Lesley-debug"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+
+      <div class="contact-image" data-aos="fade-left" data-aos-duration="1000">
+        <form class="contact-form" action="contact.php" method="post">
+          <h2>Send me a Mail</h2>
+          <label for="name">Name</label>
+          <input type="text" name="name" placeholder="Your Name" required />
+          <label for="email">Email</label>
+          <input type="email" name="email" placeholder="Your Email" required />
+          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+          <button type="submit" class="btn-primary">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Lesley Tabi. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ offset: 0, duration: 1000 });
+  </script>
+  <script src="js/nav.js"></script>
+
+  <style>
+    /* CONTACT SECTION (Styled like About) */
+.contact-section {
+  padding: 100px 0;
+  background: linear-gradient(to right, rgb(255,255,255), rgb(254,215,173));
+}
+
+.contact-section .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 40px;
+  padding: 0 20px;
+}
+
+.contact-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact-content h2 {
+  font-size: 2.3rem;
+  color: #222;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.contact-content h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #007bff;
+  margin-top: 8px;
+  border-radius: 3px;
+}
+
+.contact-content h3 {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.contact-content p {
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.contact-details p {
+  margin: 8px 0;
+}
+
+.contact-image {
+  flex: 0.9;
+  background: #f9f9f9;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0,123,255,0.2);
+}
+
+.contact-form button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-section .container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .contact-image {
+    width: 90%;
+  }
+}
+
+  </style>
+</body>
+</html>

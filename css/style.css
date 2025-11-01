@@ -1,0 +1,770 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+/* Like/Comment Actions */
+.post-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin: 18px 0;
+}
+.like-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    background: #0d6efd;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    outline: none;
+    position: relative;
+}
+.like-btn[data-liked="1"] {
+    background: #e9f2ff;
+    color: #0d6efd;
+}
+.like-btn:focus {
+    box-shadow: 0 0 0 2px #0d6efd33;
+}
+.like-btn .like-icon {
+    font-size: 1.2em;
+    transition: color 0.2s;
+}
+.like-btn.like-animate {
+    animation: likeBounce 0.35s cubic-bezier(.68,-0.55,.27,1.55);
+}
+@keyframes likeBounce {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.3); }
+    60% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+.comment-link {
+    color: #555;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+html{
+    overflow-x: hidden;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh; /* allows scrolling beyond 1 viewport */
+    overflow-x: hidden; /* keep horizontal scroll off */
+    background: linear-gradient(to right, rgb(255,255,255), rgb(254,215,173));
+    display: flex;
+    flex-direction: column;
+}
+
+
+nav{
+    width: 100%;
+    height: 10vh;
+    position: sticky;
+    top: 0;
+    background: #fff; /* add background so it doesn’t overlap content */
+    z-index: 1000;
+}
+
+
+.nav-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo{
+    color: black;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.logo span{
+    color: rgb(109,67, 0);
+    text-shadow: 0 0 10px rgb(109,67, 0);
+}
+
+.hamburg, .cancel{
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: black;
+    font-size: 2rem;
+    display: none;
+}
+
+.nav-container .links {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.nav-container .links a{
+    position: relative;
+    font-size: 1.2rem;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    transform: 0.3s linear;
+}
+
+.nav-container .links a::before{
+    position: absolute;
+    content: "";
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: rgb(109,67, 0);
+    transition: 0.2s linear;
+}
+
+.nav-container .links a:hover::before{
+    width: 100%;
+}
+
+.nav-container .contact-btn{
+    background-color: transparent;
+    padding: 5px 20px;
+    border-radius: 20px;
+    border: 2px solid rgb(109,67, 0);
+    transition: 0.2s linear;
+}
+
+.nav-container .contact-btn a{
+    
+    transition: 0.3s linear;
+}
+
+.nav-container .contact-btn:hover, .nav-container .contact-btn:hover a{
+    background-color: rgb(109,67, 0);
+    color: white;
+}
+
+.nav-container .links a:hover{
+    color: rgb(252, 251, 251);
+    background-color: #111;
+}
+/* Desktop links */
+.nav-container .links a {
+    position: relative;
+    font-size: 1.2rem;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-container .links a::before{
+    position: absolute;
+    content: "";
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: rgb(109,67,0);
+    transition: 0.3s ease;
+}
+
+.nav-container .links a:hover::before {
+    width: 100%;
+}
+
+.nav-container .links a:hover {
+    color: rgb(252, 251, 251);
+    background-color: #111;
+    border-radius: 5px;
+}
+
+/* Mobile dropdown links */
+.dropdown .links a {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.dropdown .links a:hover,
+.dropdown .links a:active,
+.dropdown .links a:focus {
+    background-color: rgb(109,67,0);
+    color: white;
+}
+
+.dropdown{
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    transform: translateY(-500px);
+    width: 100%;
+    height: auto;
+    backdrop-filter: brightness(40%) blur(3px);
+    box-shadow: 0 0 20px black;
+    transition: 0.2s linear;
+}
+
+.dropdown .links a{
+    color: white;
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    padding: 15px 0;
+    align-items: center;
+    transition: 0.2s linear;
+}
+
+.dropdown .links a:hover{
+    background-color: rgb(109,67, 0);
+}
+
+section {
+    width: 100%;
+    min-height: 90vh; /* allows tall content */
+    padding: 60px 0;
+}
+
+.main-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.main-container .image{
+    z-index: -1;
+    width: 50%;
+}
+
+.main-container .image img{
+    width: 100%;
+}
+
+.main-container .content{
+    color: black;
+    width: 40%;
+    min-height: 100px;
+}
+
+.content h1{
+    font-size: clamp(1rem, 2rem + 5vw, 3rem);
+}
+
+.content h1 span{
+    color: rgb(109,67, 0);
+    text-shadow: 0 0 10px rgb(109,67, 0);
+}
+
+.content .typewriter{
+    font-weight: 600;
+    font-size: clamp(1rem, 1rem + 5vw, 2rem);
+}
+
+.content .typewriter span{
+    color: rgb(109,67, 0);
+    font-size: 2.5rem;
+    text-shadow: 0 0 5px rgb(109,67, 0);
+    position: relative;
+    transition: 0.3s linear;
+}
+
+.typewriter span::before{
+    content: "Backend Developer";
+    animation: words 15s infinite;
+}
+
+.typewriter span::after{
+    content: "";
+    position: absolute;
+    width: calc(100% + 8px);
+    height: 100%;
+    border-left: 3px solid black;
+    animation:  cursor 0.6s linear infinite;
+}
+
+@keyframes cursor {
+    to{
+        border-left: 3px solid #b74b4b;
+    }
+}
+
+@keyframes words {
+    0%, 33%{
+        content: "Backend Developer";
+    }
+    34%, 66%{
+        content: "Designer";
+    }
+    67%, 100%{
+        content: "Youtuber";
+    }
+}
+
+.content p{
+    font-size: clamp(0.4rem, 0.2rem + 9vw, 1rem);
+    margin: 10px 0;
+}
+
+.social-links i{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    background-color:transparent;
+    border: 0.2rem solid rgb(109,67, 0);
+    border-radius: 50%;
+    color:rgb(109,67, 0);
+    margin: 5px 10px;
+    font-size: 1.5rem;
+    transition: 0.2s linear;
+}
+
+.social-links i:hover{
+    scale: 1.3;
+    color: white;
+    background-color: rgb(109,67, 0);
+    filter: drop-shadow(0 0 10px rgb(109,67,0));
+}
+
+.content button{
+    width: 40%;
+    height: 6vh;
+    margin: 30px;
+    background-color: rgb(109,67, 0);
+    color: white;
+    border: none;
+    outline: none;
+    font-size: 100%;
+    font-weight: 700;
+    border-radius: 5px;
+    transition: 0.2s linear;
+}
+
+.content button:hover{
+ scale: 1.1;
+ color: rgb(109,67, 0);
+ border: 2px solid rgb(109,67, 0);
+ background-color: transparent;
+ font-weight: 700;
+ box-shadow: 0 0 40px rgb(109,67, 0);
+}
+
+@media (max-width:884px) {
+    body{
+        overflow-y: visible;
+    }
+
+    nav .logo{
+        position: absolute;
+        top: 16px;
+        left: 15px;
+        font-size: 1.5rem;
+    }
+
+    .main-container{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav-container .links{
+        display: none;
+    }
+
+    .hamburg,.cancel{
+        display: block;
+    }
+
+    .main-container .content{
+        width: 80%;
+    }
+
+    .social-links i{
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.5rem;
+    }
+    .cancel{
+        color: white;
+    }
+
+    .main-container .image{
+        width: 80%;
+        margin-bottom: 0px;
+    }
+}
+
+/* NOTE: Removed duplicate reset + .navbar styles to avoid unintended overrides.
+     The project uses the `.nav-container`/`nav` markup; if you need `.navbar`
+     support later, we can add a small adapter instead of keeping two nav systems. */
+
+/* FOOTER */
+footer {
+    margin-top: auto;
+    text-align: center;
+    background: #111;
+    color: #fff;
+    padding: 20px;
+}
+
+/* ABOUT SECTION */
+.about-section {
+  padding: 100px 0;
+ background: linear-gradient(to right, rgb(255,255,255), rgb(254,215,173));
+}
+
+.about-section .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 40px;
+  padding: 0 20px;
+}
+
+.about-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-content h2 {
+  font-size: 2.3rem;
+  color: #222;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.about-content h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #007bff;
+  margin-top: 8px;
+  border-radius: 3px;
+}
+
+.about-content h3 {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.about-content p {
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: #007bff;
+  color: #fff;
+  padding: 10px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #0056b3;
+  transform: translateY(-3px);
+}
+
+/* IMAGE STYLES */
+.about-image {
+  flex: 0.8;
+  text-align: center;
+}
+
+.about-image img {
+  width: 300px;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: 0.3s ease;
+}
+
+.about-image img:hover {
+    transform: scale(1.03);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .about-section .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .about-image img {
+    width: 250px;
+  }
+}
+
+
+
+/* SERVICES SECTION */
+    .services-section {
+      padding: 100px 20px;
+      background: linear-gradient(to right, rgb(255,255,255), rgb(254,215,173));
+    }
+
+    .services-cards {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .service-card {
+      background: #fff;
+      flex: 1;
+      min-width: 250px;
+      padding: 40px 20px;
+      text-align: center;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card i {
+      font-size: 3rem;
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #222;
+    }
+
+    .service-card p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .services-cards {
+        flex-direction: column;
+        align-items: center;
+                display: flex;
+      }
+    }
+
+/* Hide hamburger on large screens only */
+body.services-page .hamburg,
+body.services-page .cancel {
+    display: none; /* hide by default */
+}
+
+/* Show hamburger on small screens */
+@media (max-width: 884px) {
+    body.services-page .hamburg,
+    body.services-page .cancel {
+        display: block; /* show on mobile */
+    }
+}
+
+
+body.contact-page .hamburg,
+body.contact-page .cancel {
+    display: none; /* hide on large screens */
+}
+
+@media (max-width: 884px) {
+    body.contact-page .hamburg,
+    body.contact-page .cancel {
+        display: block; /* show on small screens */
+    }
+}
+
+/* Improve touch/small-screen behavior:
+   - Add :focus and :active fallbacks so hover effects trigger on tap/focus
+   - Add touch-action and remove tap highlight for better responsiveness on mobile
+   These are small, backward-compatible rules appended at the end so they override
+   earlier hover-only declarations without changing layout. */
+
+/* Make links/buttons respond to tap (active/focus) as well as hover */
+a, button, .nav-container .links a, .dropdown .links a {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+/* Nav link underline and background for hover/focus/active */
+.nav-container .links a:hover::before,
+.nav-container .links a:focus::before,
+.nav-container .links a:active::before {
+    width: 100% !important;
+}
+
+.nav-container .links a:hover,
+.nav-container .links a:focus,
+.nav-container .links a:active {
+    color: rgb(252, 251, 251);
+    background-color: #111;
+    border-radius: 5px;
+}
+
+/* Dropdown links already have :active/:focus in some places, but include a general rule */
+.dropdown .links a:focus,
+.dropdown .links a:active {
+    background-color: rgb(109,67,0);
+    color: white;
+}
+
+/* Social icons (hover -> tap) */
+.social-links i:hover,
+.social-links i:focus,
+.social-links i:active {
+    transform: scale(1.3);
+    color: white;
+    background-color: rgb(109,67, 0);
+    filter: drop-shadow(0 0 10px rgb(109,67,0));
+}
+
+/* Main buttons */
+.content button:hover,
+.content button:focus,
+.content button:active {
+    transform: scale(1.1);
+    color: rgb(109,67, 0);
+    border: 2px solid rgb(109,67, 0);
+    background-color: transparent;
+    font-weight: 700;
+    box-shadow: 0 0 40px rgb(109,67, 0);
+}
+
+/* Service cards: include focus/active to support keyboard and touch */
+.service-card:hover,
+.service-card:focus,
+.service-card:active {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+/* About image hover fallback: use a small scale on focus/active too */
+.about-image img:hover,
+.about-image img:focus,
+.about-image img:active {
+    transform: scale(1.03);
+    transition: 0.3s ease;
+}
+
+/* Accessibility: visible focus outline for keyboard users (non-invasive) */
+:focus {
+    outline: 3px solid rgba(109,67,0,0.15);
+    outline-offset: 3px;
+}
+
+/* Simple tooltip using data-tooltip for elements with .has-tooltip */
+.has-tooltip {
+    position: relative;
+}
+.has-tooltip[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    bottom: calc(100% + 8px);
+    background: rgba(0,0,0,0.8);
+    color: #fff;
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    z-index: 2000;
+}
+.has-tooltip:focus::after,
+.has-tooltip:hover::after,
+.has-tooltip:active::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Enforce hamburger hidden on wider screens in case of overrides or load issues */
+@media (min-width: 885px) {
+    .hamburg, .cancel {
+        display: none !important;
+    }
+}
+
+/* ===== Content entrance + subtle float ===== */
+@keyframes contentEntrance {
+    0% { opacity: 0; transform: translateY(18px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatY {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
+/* Apply entrance animation to main content areas */
+main,
+.container,
+.main-container,
+.projects-grid,
+.auth-container,
+.project-card {
+    animation: contentEntrance 700ms ease-out both;
+}
+
+/* Gentle continuous float for single prominent containers */
+.auth-box,
+.project-card {
+    /* small, slow float to add life but not distract */
+    animation: contentEntrance 700ms ease-out both, floatY 6s ease-in-out 700ms infinite;
+}
+
+/* Respect user's reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    main,
+    .container,
+    .main-container,
+    .projects-grid,
+    .auth-container,
+    .project-card,
+    .auth-box {
+        animation: none !important;
+        transition: none !important;
+    }
+}

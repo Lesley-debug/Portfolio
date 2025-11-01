@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | Lesley Portfolio</title>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <style>
+    .section-header h2{
+      text-align: left;
+      margin-left: 45px;
+      margin-top: 40px;
+    }
+
+    .section-header .pa{
+      font-weight: bold;
+      margin-left: 45px;
+    }
+  </style>
+</head>
+<body class="services-page">
+
+  <!-- Navbar -->
+  <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1000">
+                <span>Lesley Tabi</span>
+            </div>
+            <div class="links">
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"><a href="index.php">Home</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"><a href="about.html">About</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400"><a href="services.html">Services</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500"><a href="blog/index.php">Blogs</a></div>
+                <div class="link contact-btn" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600"><a href="contact.html">Contact Us</a></div>
+            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        </div>
+        <div class="dropdown">
+            <div class="links">
+                <a href="index.php">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="blog/index.php">Blogs</a>
+                <a href="contact.html">Contact</a>
+                <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+            </div>
+        </div>
+    </nav>
+
+  <!-- Section Header -->
+  <div class="section-header" data-aos="fade-down">
+    <h2>My Services</h2>
+    <p class="pa">I provide creative and technical solutions to help bring your projects to life.</p>
+  </div>
+
+  <!-- Services Section -->
+  <div class="services-section container">
+    <div class="services-cards">
+      <!-- Backend Development -->
+      <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+        <i class="fas fa-code"></i>
+        <h3>Backend Development</h3>
+        <p>Building secure and efficient web applications using PHP, Laravel, MySQL, and API integration. Focused on clean, scalable code.</p>
+      </div>
+
+      <!-- Graphic Design -->
+      <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+        <i class="fas fa-paint-brush"></i>
+        <h3>Graphic Design</h3>
+        <p>Creating visually appealing designs for web and print, including logos, banners, social media graphics, and branding materials.</p>
+      </div>
+
+      <!-- Video Editing -->
+      <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+        <i class="fas fa-video"></i>
+        <h3>Video Editing</h3>
+        <p>Professional video editing, including promotional videos, YouTube content, and social media clips, with attention to detail and storytelling.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+          AOS.init({offset:0});
+        </script>
+    <script src="js/nav.js"></script>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Lesley Tabi. All Rights Reserved.</p>
+  </footer>
+
+  
+</body>
+</html>

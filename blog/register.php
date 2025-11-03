@@ -9,18 +9,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $username, $email, $password);
+    // Check if username or email already exists
+    $check = $conn->prepare("SELECT id FROM users WHERE username = ? OR email = ?");
+    $check->bind_param("ss", $username, $email);
+    $check->execute();
+    $check->store_result();
 
-    if ($stmt->execute()) {
-        $_SESSION['success'] = "Account created! You can login now.";
-        header("Location: login.php");
-        exit;
+    if ($check->num_rows > 0) {
+        $message = "⚠️ Username or Email already exists. Please choose another.";
     } else {
-        $message = "Error: " . $stmt->error;
+        // Proceed to register new user
+        $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $username, $email, $password);
+
+        if ($stmt->execute()) {
+            $_SESSION['success'] = "✅ Account created! You can login now.";
+            header("Location: login.php");
+            exit;
+        } else {
+            $message = "Error: " . $stmt->error;
+        }
+
+        $stmt->close();
     }
+
+    $check->close();
+    $conn->close();
 }
 ?>
+
     <style>
         /* ===== Authentication Page ===== */
 .auth-page {

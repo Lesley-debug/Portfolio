@@ -1,13 +1,14 @@
 <?php
 session_start();
 include '../includes/config.php';
+
 $message = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_or_username = trim($_POST['email_or_username']);
     $password = $_POST['password'];
 
-    // 1️⃣ Check in admin table first
+    // --- 1️⃣ Check admin table first ---
     $stmt = $conn->prepare("SELECT * FROM admin WHERE username = ?");
     $stmt->bind_param("s", $email_or_username);
     $stmt->execute();
@@ -22,30 +23,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             header("Location: ../admin/dashboard.php");
             exit;
-        }
-    }
-
-    // 2️⃣ If not admin, check in users table
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? OR username = ?");
-    $stmt->bind_param("ss", $email_or_username, $email_or_username);
-    $stmt->execute();
-    $userResult = $stmt->get_result();
-
-    if ($userResult->num_rows === 1) {
-        $user = $userResult->fetch_assoc();
-        if (password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['role'] = 'user';
-
-            header("Location: index.php");
-            exit;
         } else {
-            $message = "Incorrect password.";
+            $message = "❌ Incorrect password for admin account.";
         }
     } else {
-        $message = "User not found.";
+        // --- 2️⃣ If not admin, check users table ---
+        $stmt = $conn->prepare("SELECT * FROM users WHERE email = ? OR username = ?");
+        $stmt->bind_param("ss", $email_or_username, $email_or_username);
+        $stmt->execute();
+        $userResult = $stmt->get_result();
+
+        if ($userResult->num_rows === 1) {
+            $user = $userResult->fetch_assoc();
+            if (password_verify($password, $user['password'])) {
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['username'] = $user['username'];
+                $_SESSION['role'] = 'user';
+
+                header("Location: index.php");
+                exit;
+            } else {
+                $message = "❌ Incorrect password.";
+            }
+        } else {
+            $message = "⚠️ No account found with that email or username.";
+        }
     }
+
+    $stmt->close();
+    $conn->close();
 }
 ?>
 <!DOCTYPE html>
@@ -57,6 +63,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        /* (✅ Keep your exact CSS here, unchanged — no need to paste it again) */
+    </style>
+</head>
+<body class="auth-page">
+
+<main class="auth-container">
+    <div class="auth-box">
+        <h2>Login to Your Account</h2>
+
+        <?php if ($message): ?>
+            <div class="auth-errors"><?= htmlspecialchars($message) ?></div>
+        <?php endif; ?>
+
+        <form method="POST" class="auth-form" autocomplete="off">
+            <div class="form-group">
+                <label>Email or Username</label>
+                <input type="text" name="email_or_username" required placeholder="Enter your email or username">
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" required placeholder="Enter your password">
+            </div>
+
+            <button type="submit" class="btn-primary">Login</button>
+        </form>
+
+        <div class="auth-links">
+            <p>Don't have an account? <a href="register.php" class="auth-links-sign">Register</a></p>
+            <p><a href="forgot_password.php" class="auth-links-forgot">Forgot password?</a></p>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
+
     <style>
         /* ===== Authentication Page ===== */
 .auth-page {
@@ -258,37 +302,3 @@ background: linear-gradient(135deg, #1f1b16 0%, #2a231a 100%);
 }
 }
     </style>
-</head>
-<body class="auth-page">
-
-<main class="auth-container">
-    <div class="auth-box">
-        <h2>Login to Your Account</h2>
-
-        <?php if ($message): ?>
-            <div class="auth-errors"><?php echo htmlspecialchars($message); ?></div>
-        <?php endif; ?>
-
-        <form method="POST" class="auth-form">
-            <div class="form-group">
-                <label>Email or Username</label>
-                <input type="text" name="email_or_username" required placeholder="Enter your email or username">
-            </div>
-
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" required placeholder="Enter your password">
-            </div>
-
-            <button type="submit" class="btn-primary">Login</button>
-        </form>
-
-        <div class="auth-links">
-            <p>Don't have an account? <a href="register.php" class="auth-links-sign">Register</a></p>
-            <p><a href="forgot_password.php" class="auth-links-forgot">Forgot password?</a></p>
-        </div>
-    </div>
-</main>
-
-</body>
-</html>

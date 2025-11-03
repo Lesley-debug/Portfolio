@@ -65,6 +65,12 @@ $username = $_SESSION['username'] ?? '';
                 <a href="../services.html">Services</a>
                 <a href="../blog/index.php">Blogs</a>
                 <a href="../contact.html">Contact</a>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <a href="logout.php" class="logout-btn">Logout (<?= htmlspecialchars($_SESSION['username']) ?>)</a>
+                <?php else: ?>
+                    <a href="login.php">Login</a>
+                <?php endif; ?>
+
                 <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
             </div>
         </div>

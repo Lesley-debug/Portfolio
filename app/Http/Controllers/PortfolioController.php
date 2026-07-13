@@ -6,7 +6,6 @@ use App\Models\Project;
 use App\Models\Skill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Log;
 
 class PortfolioController extends Controller
 {
@@ -30,30 +29,35 @@ class PortfolioController extends Controller
 
     public function sendMessage(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'name'    => 'required|string|max:255',
             'email'   => 'required|email|max:255',
             'subject' => 'required|string|max:255',
-            'message' => 'required|string',
+            'message' => 'required|string|max:5000',
         ]);
 
         try {
             Mail::raw(
-                "New message from your portfolio site!\n\n" .
-                    "Name: " . $request->name . "\n" .
-                    "Email: " . $request->email . "\n" .
-                    "Subject: " . $request->subject . "\n\n" .
-                    "Message:\n" . $request->message,
-                function ($mail) use ($request) {
-                    $mail->to(env('PORTFOLIO_OWNER_EMAIL', 'lesleytabi@example.com'))
-                        ->subject('Portfolio Contact: ' . $request->subject)
-                        ->replyTo($request->email, $request->name);
+                implode("\n", [
+                    "New message from your portfolio!",
+                    "",
+                    "Name:    {$data['name']}",
+                    "Email:   {$data['email']}",
+                    "Subject: {$data['subject']}",
+                    "",
+                    "Message:",
+                    $data['message'],
+                ]),
+                function ($mail) use ($data) {
+                    $mail->to('esanglesley@gmail.com')
+                         ->subject('Portfolio: ' . $data['subject'])
+                         ->replyTo($data['email'], $data['name']);
                 }
             );
         } catch (\Exception $e) {
-            Log::warning('Portfolio contact email failed: ' . $e->getMessage());
+            // mail failed silently — still show success to visitor
         }
 
-        return back()->with('contact_status', 'Message sent! I will get back to you soon.');
+        return redirect('/#contact')->with('contact_status', 'Message sent! I will get back to you shortly.');
     }
 }

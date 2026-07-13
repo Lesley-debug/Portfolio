@@ -1,2 +1,6 @@
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /vendor/
+Disallow: /storage/
+
+Sitemap: https://abnbuild-new.ct.ws/sitemap.xml

@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('title', $project->title . ' — Lesley Tabi')
+@section('title', $project->title . ' — Lesley Tabi | Laravel Developer Cameroon')
+@section('meta_description', $project->summary . ' Built by Lesley Tabi, Software Engineer in Bamenda, Cameroon.')
+@section('canonical', config('app.url') . '/projects/' . $project->slug)
 
 @section('content')
 

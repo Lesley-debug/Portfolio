@@ -13,8 +13,49 @@
             <li><a href="#projects">projects</a></li>
             <li><a href="#contact">contact</a></li>
         </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
     </div>
 </nav>
+
+{{-- MOBILE DRAWER --}}
+<div class="nav-drawer" id="navDrawer">
+    <div class="nav-drawer-backdrop" id="navBackdrop"></div>
+    <div class="nav-drawer-panel">
+        <a href="#skills"  class="nav-drawer-link" data-close>schema</a>
+        <a href="#projects" class="nav-drawer-link" data-close>projects</a>
+        <a href="#contact"  class="nav-drawer-link" data-close>contact</a>
+        <a href="{{ asset('files/resume.pdf') }}" target="_blank" rel="noopener" class="nav-drawer-cv">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            View CV
+        </a>
+    </div>
+</div>
+
+<script>
+    (function () {
+        const toggle = document.getElementById('navToggle');
+        const drawer = document.getElementById('navDrawer');
+        const backdrop = document.getElementById('navBackdrop');
+
+        function open() {
+            toggle.classList.add('is-open');
+            drawer.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function close() {
+            toggle.classList.remove('is-open');
+            drawer.classList.remove('is-open');
+            document.body.style.overflow = '';
+        }
+
+        toggle.addEventListener('click', () => drawer.classList.contains('is-open') ? close() : open());
+        backdrop.addEventListener('click', close);
+        drawer.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', close));
+    })();
+</script>
 
 {{-- HERO --}}
 <section class="hero">
@@ -326,6 +367,7 @@
 
             <div class="footer-copy">
                 &copy; {{ date('Y') }} Lesley Tabi &middot; built with <span class="heart">&hearts;</span> in Laravel
+                &middot; <a href="/terms">Terms</a> &middot; <a href="/privacy">Privacy</a>
             </div>
         </div>
     </div>

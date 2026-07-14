@@ -2,7 +2,7 @@
 
 @section('title', 'Terms & Conditions — Lesley Tabi')
 @section('meta_description', 'Terms and conditions for using Lesley Tabi\'s portfolio website.')
-@section('canonical', config('app.url') . '/terms')
+@section('canonical', url('/terms'))
 
 @section('content')
 
@@ -76,7 +76,7 @@
         <h1>Terms &amp; Conditions</h1>
         <p class="legal-date">// Last updated: {{ date('F Y') }}</p>
 
-        <p>By accessing and using this website (<strong>abnbuild-new.ct.ws</strong>), you agree to the following terms. If you do not agree, please do not use this site.</p>
+        <p>By accessing and using this website (<strong>lesleydesigns.wuaze.com</strong>), you agree to the following terms. If you do not agree, please do not use this site.</p>
 
         <h2>01 — Use of this site</h2>
         <p>This is a personal portfolio website. You may browse the content for informational purposes only. You may not:</p>

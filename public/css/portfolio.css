@@ -318,6 +318,7 @@ a:hover { text-decoration: underline; }
 
 /* entrance animations */
 .hero-request,
+.hero-title,
 .json-block,
 .hero-tagline,
 .hero-cta {
@@ -326,9 +327,10 @@ a:hover { text-decoration: underline; }
 }
 
 .hero-request  { animation: hero-rise 0.7s cubic-bezier(0.16,1,0.3,1) 0.1s forwards; }
-.json-block    { animation: hero-rise 0.7s cubic-bezier(0.16,1,0.3,1) 0.28s forwards; }
-.hero-tagline  { animation: hero-rise 0.7s cubic-bezier(0.16,1,0.3,1) 0.46s forwards; }
-.hero-cta      { animation: hero-rise 0.7s cubic-bezier(0.16,1,0.3,1) 0.62s forwards; }
+.hero-title    { animation: hero-rise 0.7s cubic-bezier(0.16,1,0.3,1) 0.2s forwards; }
+.json-block    { animation: hero-rise 0.7s cubic-bezier(0.16,1,0.3,1) 0.34s forwards; }
+.hero-tagline  { animation: hero-rise 0.7s cubic-bezier(0.16,1,0.3,1) 0.5s forwards; }
+.hero-cta      { animation: hero-rise 0.7s cubic-bezier(0.16,1,0.3,1) 0.66s forwards; }
 
 @keyframes hero-rise {
   from { opacity: 0; transform: translateY(22px); }
@@ -379,6 +381,15 @@ a:hover { text-decoration: underline; }
 @keyframes pulse-dot {
   0%, 100% { box-shadow: 0 0 0 0 rgba(126,231,135,0.6); }
   50%       { box-shadow: 0 0 0 5px rgba(126,231,135,0); }
+}
+
+.hero-title {
+  max-width: 760px;
+  margin: 0 0 22px;
+  color: var(--text-bright);
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.16;
 }
 
 /* ============================================
@@ -555,7 +566,7 @@ a:hover { text-decoration: underline; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-request, .json-block, .hero-tagline, .hero-cta {
+  .hero-request, .hero-title, .json-block, .hero-tagline, .hero-cta {
     opacity: 1; transform: none; animation: none;
   }
   .hero-video { display: none; }
@@ -1375,6 +1386,7 @@ a:hover { text-decoration: underline; }
       linear-gradient(180deg, rgba(13,17,23,0.65) 0%, rgba(13,17,23,0.1) 40%, rgba(13,17,23,0.92) 100%),
       linear-gradient(90deg, rgba(13,17,23,0.7) 0%, transparent 100%);
   }
+  .hero-title { font-size: 29px; line-height: 1.2; margin-bottom: 18px; }
   .hero-tagline { font-size: 15px; max-width: 100%; }
   .hero-cta { gap: 10px; }
   .hero-cta .btn { font-size: 12.5px; padding: 10px 16px; }
@@ -1438,5 +1450,3 @@ a:hover { text-decoration: underline; }
   .proj-screenshot-placeholder { height: 200px; }
   .json-block { font-size: 11px; }
 }
-
-

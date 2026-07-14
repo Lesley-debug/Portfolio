@@ -2,7 +2,7 @@
 
 @section('title', 'Privacy Policy — Lesley Tabi')
 @section('meta_description', 'Privacy policy for Lesley Tabi\'s portfolio website. Learn what data is collected and how it is used.')
-@section('canonical', config('app.url') . '/privacy')
+@section('canonical', url('/privacy'))
 
 @section('content')
 
@@ -134,7 +134,7 @@
 
         <h2>05 — Third-party services</h2>
         <ul>
-            <li><strong>Google Fonts</strong> — fonts are loaded from Google's CDN. Google may log your IP. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
+            <li><strong>Local fonts</strong> — fonts are served from this website, not loaded from a third-party font CDN.</li>
             <li><strong>GitHub / LinkedIn</strong> — external links only. Clicking them takes you to their platforms under their own privacy policies.</li>
         </ul>
 

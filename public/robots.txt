@@ -3,4 +3,4 @@ Allow: /
 Disallow: /vendor/
 Disallow: /storage/
 
-Sitemap: https://abnbuild-new.ct.ws/sitemap.xml
+Sitemap: https://lesleydesigns.wuaze.com/sitemap.xml

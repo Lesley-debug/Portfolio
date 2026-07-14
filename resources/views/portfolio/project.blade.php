@@ -3,6 +3,12 @@
 @section('title', $project->title . ' — Lesley Tabi | Laravel Developer Cameroon')
 @section('meta_description', $project->summary . ' Built by Lesley Tabi, Software Engineer in Bamenda, Cameroon.')
 @section('canonical', route('projects.show', $project))
+@php
+    $projectHasCover = $project->cover_image && file_exists(public_path('images/' . $project->cover_image));
+    $projectImage = $projectHasCover ? asset('images/' . $project->cover_image) : asset('images/og-cover.png');
+@endphp
+@section('image', $projectImage)
+@section('image_alt', $projectHasCover ? $project->title . ' project screenshot by Lesley Tabi' : 'Lesley Tabi software engineer portfolio preview')
 
 @section('content')
 

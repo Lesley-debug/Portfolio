@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('title', 'Lesley Tabi — Laravel & PHP Software Engineer in Cameroon')
+@section('image', asset('images/og-cover.png'))
+@section('image_alt', 'Lesley Tabi Laravel, PHP, Python and React software engineer portfolio preview')
 
 @section('content')
 
@@ -64,19 +66,28 @@
 <section class="hero">
     <div class="hero-grid"></div>
     <video class="hero-video" autoplay muted loop playsinline
-        poster="{{ asset('images/hero-poster.jpg') }}">
+        poster="{{ asset('images/og-cover.png') }}">
         <source src="{{ asset('videos/hero-demo.mp4') }}" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-video-credit">background: live preview — NST Herbal Clinic</div>
     <div class="container">
         <div class="hero-request">
+            <img
+                src="{{ asset('images/lesley-tabi.jpg') }}"
+                alt="Lesley Tabi, software engineer in Cameroon"
+                class="hero-avatar"
+                width="1122"
+                height="1402"
+                fetchpriority="high"
+                decoding="async"
+            >
             <span class="hero-method">GET</span>
             <span>/developer/lesley-tabi</span>
             <span class="hero-status">200 OK</span>
         </div>
 
-        <h1 class="hero-title">Lesley Tabi, Laravel &amp; PHP Software Engineer in Cameroon</h1>
+        <h1 class="hero-title">Lesley Tabi, Laravel, PHP, Python &amp; React Software Engineer in Cameroon</h1>
 
         <div class="json-block">
             <div class="json-titlebar">

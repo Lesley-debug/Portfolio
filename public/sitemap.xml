@@ -1,28 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
     <loc>https://lesleydesigns.wuaze.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://lesleydesigns.wuaze.com/images/og-cover.png</image:loc>
+      <image:title>Lesley Tabi portfolio preview</image:title>
+      <image:caption>Laravel, PHP, Python and React software engineer portfolio by Lesley Tabi</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://lesleydesigns.wuaze.com/images/lesley-tabi.jpg</image:loc>
+      <image:title>Lesley Tabi</image:title>
+      <image:caption>Lesley Tabi, software engineer in Cameroon</image:caption>
+    </image:image>
   </url>
 
   <url>
     <loc>https://lesleydesigns.wuaze.com/projects/abn-building-project</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lesleydesigns.wuaze.com/images/abn.png</image:loc>
+      <image:title>ABN Building Project</image:title>
+      <image:caption>ABN Building Project screenshot by Lesley Tabi</image:caption>
+    </image:image>
   </url>
 
   <url>
     <loc>https://lesleydesigns.wuaze.com/projects/nst-herbal-clinic</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lesleydesigns.wuaze.com/images/nst.png</image:loc>
+      <image:title>NST Herbal Clinic</image:title>
+      <image:caption>NST Herbal Clinic screenshot by Lesley Tabi</image:caption>
+    </image:image>
   </url>
 
   <url>
     <loc>https://lesleydesigns.wuaze.com/projects/invento-track</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://lesleydesigns.wuaze.com/images/invento.png</image:loc>
+      <image:title>Invento Track</image:title>
+      <image:caption>Invento Track screenshot by Lesley Tabi</image:caption>
+    </image:image>
   </url>
 
   <url>

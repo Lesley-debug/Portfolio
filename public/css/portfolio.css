@@ -348,6 +348,17 @@ a:hover { text-decoration: underline; }
   flex-wrap: wrap;
 }
 
+.hero-avatar {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  object-position: center 24%;
+  border-radius: var(--radius);
+  border: 1px solid rgba(88,166,255,0.28);
+  background: var(--bg-raised);
+  flex: 0 0 auto;
+}
+
 .hero-method {
   color: var(--green);
   font-weight: 700;

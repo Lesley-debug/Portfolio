@@ -67,7 +67,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/portfolio.css') }}?v={{ filemtime(public_path('css/portfolio.css')) }}">
     @stack('styles')
-    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/">
+    <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/png">
 </head>
 
 <body>

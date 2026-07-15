@@ -84,7 +84,7 @@
     {{-- Primary SEO --}}
     <title>{{ $pageTitle }}</title>
     <meta name="description"  content="{{ $pageDescription }}">
-    <meta name="keywords"     content="Lesley Tabi, Lesley, Leslie, Bamenda developer, Cameroon developer, Lesley developer, software engineer Cameroon, backend developer Cameroon, Laravel developer Cameroon, PHP developer Cameroon, Bamenda developer, web developer Cameroon, full stack developer Cameroon, Laravel developer Africa, PHP developer Africa, hire developer Cameroon, lesley tabi portfolio">
+    <meta name="keywords"     content="Lesley Tabi, Lesley, Leslie, Bamenda developer, Cameroon developer, Lesley developer, software engineer Cameroon, backend developer Cameroon, Laravel developer Cameroon, Python developer Cameroon, Bamenda developer, web developer Cameroon, full stack developer Cameroon, Laravel developer Africa, Python developer Africa, hire developer Cameroon, lesley tabi portfolio">
     <meta name="author"       content="Lesley Tabi">
     <meta name="robots"       content="index, follow, max-image-preview:large">
     <link rel="canonical"     href="{{ $pageCanonical }}">

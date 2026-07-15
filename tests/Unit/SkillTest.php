@@ -16,6 +16,6 @@ class SkillTest extends TestCase
         $skills = Skill::portfolioSkills();
 
         $this->assertCount(1, $skills);
-        $this->assertSame('Configured Skill', $skills->first()['name']);
+        $this->assertSame('Configured Skill', $skills->first()->name);
     }
 }

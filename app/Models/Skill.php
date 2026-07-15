@@ -19,7 +19,10 @@ class Skill extends Model
         $configuredSkills = config('portfolio.skills', []);
 
         if (!empty($configuredSkills)) {
-            return collect($configuredSkills)->sortBy('sort_order')->values();
+            return collect($configuredSkills)
+                ->map(fn(array $skill) => new self($skill))
+                ->sortBy('sort_order')
+                ->values();
         }
 
         return self::query()->orderBy('sort_order')->get();

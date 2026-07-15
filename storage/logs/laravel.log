@@ -2374,3 +2374,13 @@ Did you mean one of these?
 #4 /home/lesley-tabi/projects/lesley-portfolio/artisan(16): Illuminate\\Foundation\\Application->handleCommand()
 #5 {main}
 "} 
+[2026-07-15 08:12:21] production.ERROR: Uncaught TypeError: get_class(): Argument #1 ($object) must be of type object, array given in Command line code:1
+Stack trace:
+#0 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught TypeError: get_class(): Argument #1 ($object) must be of type object, array given in Command line code:1
+Stack trace:
+#0 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 

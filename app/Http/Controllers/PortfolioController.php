@@ -12,7 +12,7 @@ class PortfolioController extends Controller
     public function index()
     {
         $projects = Project::orderBy('sort_order')->get();
-        $skills = Skill::orderBy('sort_order')->get()->groupBy('category');
+        $skills = Skill::portfolioSkills()->groupBy('category');
 
         return view('portfolio.index', [
             'projects' => $projects,
@@ -50,8 +50,8 @@ class PortfolioController extends Controller
                 ]),
                 function ($mail) use ($data) {
                     $mail->to('esanglesley@gmail.com')
-                         ->subject('Portfolio: ' . $data['subject'])
-                         ->replyTo($data['email'], $data['name']);
+                        ->subject('Portfolio: ' . $data['subject'])
+                        ->replyTo($data['email'], $data['name']);
                 }
             );
         } catch (\Exception $e) {

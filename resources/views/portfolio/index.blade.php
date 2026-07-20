@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Lesley Tabi — Laravel & PHP Software Engineer in Cameroon')
+@section('title', 'Lesley Tabi — Software Engineer in Cameroon')
+@section('meta_description', 'Lesley Tabi is a Software Engineer in Bamenda, Cameroon building Laravel, PHP, Python, Livewire and React web applications for full-time, contract and remote work.')
 @section('image', asset('images/og-cover.png'))
 @section('image_alt', 'Lesley Tabi Laravel, PHP, Python and React software engineer portfolio preview')
 
@@ -87,7 +88,7 @@
             <span class="hero-status">200 OK</span>
         </div>
 
-        <h1 class="hero-title">Lesley Tabi, Laravel, PHP, Python &amp; React Software Engineer in Cameroon</h1>
+        <h1 class="hero-title">Lesley Tabi, Software Engineer in Cameroon</h1>
 
         <div class="json-block">
             <div class="json-titlebar">
@@ -124,7 +125,7 @@
         </div>
 
         <p class="hero-tagline">
-            I build full products — <strong>Laravel/Livewire or React on the frontend, backed by APIs and databases that don't fall over</strong> — and I make sure it ships, even when the deployment gets messy.
+            I build full products — <strong>Laravel, PHP and Python backends with Livewire or React frontends, backed by APIs and databases that don't fall over</strong> — and I make sure it ships, even when the deployment gets messy.
         </p>
 
         <div class="hero-cta">

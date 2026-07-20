@@ -5,22 +5,24 @@
 
   <url>
     <loc>https://lesleydesigns.wuaze.com/</loc>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://lesleydesigns.wuaze.com/images/og-cover.png</image:loc>
-      <image:title>Lesley Tabi portfolio preview</image:title>
+      <image:title>Lesley Tabi software engineer portfolio preview</image:title>
       <image:caption>Laravel, PHP, Python and React software engineer portfolio by Lesley Tabi</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://lesleydesigns.wuaze.com/images/lesley-tabi.jpg</image:loc>
-      <image:title>Lesley Tabi</image:title>
+      <image:title>Lesley Tabi, Software Engineer</image:title>
       <image:caption>Lesley Tabi, software engineer in Cameroon</image:caption>
     </image:image>
   </url>
 
   <url>
     <loc>https://lesleydesigns.wuaze.com/projects/abn-building-project</loc>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -32,6 +34,7 @@
 
   <url>
     <loc>https://lesleydesigns.wuaze.com/projects/nst-herbal-clinic</loc>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -43,6 +46,7 @@
 
   <url>
     <loc>https://lesleydesigns.wuaze.com/projects/invento-track</loc>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -54,30 +58,35 @@
 
   <url>
     <loc>https://lesleydesigns.wuaze.com/projects/reading-space</loc>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://lesleydesigns.wuaze.com/projects/riche-coursos</loc>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://lesleydesigns.wuaze.com/projects/pruc</loc>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://lesleydesigns.wuaze.com/terms</loc>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://lesleydesigns.wuaze.com/privacy</loc>
+    <lastmod>2026-07-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

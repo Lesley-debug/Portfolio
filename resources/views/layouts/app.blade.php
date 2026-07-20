@@ -6,13 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     @php
-        $siteUrl         = rtrim(config('app.url'), '/');
-        $pageTitle       = trim($__env->yieldContent('title', 'Lesley Tabi — Software Engineer | Laravel & PHP Developer in Cameroon'));
-        $pageDescription = trim($__env->yieldContent('meta_description', 'Lesley Tabi is a Software Engineer based in Bamenda, Cameroon. Specializing in PHP, Laravel, Livewire and full-stack web development. Available for full-time, contract and remote work.'));
-        $pageCanonical   = trim($__env->yieldContent('canonical', $siteUrl . '/'));
+        $siteUrl = rtrim(config('app.url'), '/');
+
+        $headText = fn (string $value): string => html_entity_decode(trim($value), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        $siteUrlFor = function (string $value, string $fallback) use ($siteUrl): string {
+            $value = trim($value);
+
+            if ($value === '') {
+                return $fallback;
+            }
+
+            if (str_starts_with($value, '//')) {
+                $value = 'https:' . $value;
+            }
+
+            $siteHost = parse_url($siteUrl, PHP_URL_HOST);
+            $valueHost = parse_url($value, PHP_URL_HOST);
+            $valuePath = parse_url($value, PHP_URL_PATH);
+
+            if (!$valueHost && str_starts_with($value, '/')) {
+                return $siteUrl . $value;
+            }
+
+            if ($valueHost && $siteHost && $valueHost === $siteHost && $valuePath) {
+                $query = parse_url($value, PHP_URL_QUERY);
+
+                return $siteUrl . $valuePath . ($query ? '?' . $query : '');
+            }
+
+            return $value;
+        };
+
+        $pageTitle       = $headText($__env->yieldContent('title', 'Lesley Tabi — Software Engineer | Laravel, PHP & Python Developer in Cameroon'));
+        $pageDescription = $headText($__env->yieldContent('meta_description', 'Lesley Tabi is a Software Engineer based in Bamenda, Cameroon. He builds Laravel, PHP, Python, Livewire and React web applications for full-time, contract and remote work.'));
+        $pageCanonical   = $siteUrlFor($__env->yieldContent('canonical', $siteUrl . '/'), $siteUrl . '/');
         $defaultImage    = $siteUrl . '/images/og-cover.png';
-        $pageImage       = trim($__env->yieldContent('image', $defaultImage));
-        $pageImageAlt    = trim($__env->yieldContent('image_alt', 'Lesley Tabi software engineer portfolio preview'));
+        $pageImage       = $siteUrlFor($__env->yieldContent('image', $defaultImage), $defaultImage);
+        $pageImageAlt    = $headText($__env->yieldContent('image_alt', 'Lesley Tabi software engineer portfolio preview'));
         $profileImage    = file_exists(public_path('images/lesley-tabi.jpg'))
             ? $siteUrl . '/images/lesley-tabi.jpg'
             : $defaultImage;
@@ -31,7 +61,8 @@
                 [
                     '@type' => 'WebSite',
                     '@id' => $siteUrl . '/#website',
-                    'name' => 'Lesley Tabi Portfolio',
+                    'name' => 'Lesley Tabi',
+                    'alternateName' => 'Lesley Tabi Portfolio',
                     'url' => $siteUrl . '/',
                     'publisher' => ['@id' => $siteUrl . '/#person'],
                     'inLanguage' => 'en',
@@ -40,13 +71,20 @@
                     '@type' => 'Person',
                     '@id' => $siteUrl . '/#person',
                     'name' => 'Lesley Tabi',
+                    'alternateName' => ['Lesley Tabi Software Engineer', 'Lesley Tabi Developer'],
                     'jobTitle' => 'Software Engineer',
                     'description' => 'Software Engineer based in Bamenda, Cameroon. Specializing in PHP, Laravel, Livewire and full-stack web development.',
                     'url' => $siteUrl . '/',
+                    'mainEntityOfPage' => $siteUrl . '/',
                     'image' => [
                         '@type' => 'ImageObject',
                         'url' => $profileImage,
                         'caption' => 'Lesley Tabi, Software Engineer in Cameroon',
+                    ],
+                    'hasOccupation' => [
+                        '@type' => 'Occupation',
+                        'name' => 'Software Engineer',
+                        'skills' => 'Laravel, PHP, Python, Livewire, React, MySQL, REST APIs',
                     ],
                     'address' => [
                         '@type' => 'PostalAddress',
@@ -68,6 +106,7 @@
                     'description' => $pageDescription,
                     'isPartOf' => ['@id' => $siteUrl . '/#website'],
                     'about' => ['@id' => $siteUrl . '/#person'],
+                    'mainEntity' => ['@id' => $siteUrl . '/#person'],
                     'primaryImageOfPage' => [
                         '@type' => 'ImageObject',
                         'url' => $pageImage,
